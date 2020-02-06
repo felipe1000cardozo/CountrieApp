@@ -1,15 +1,21 @@
 import React from 'react';
 
+import { Card } from './style'
+
 const CardCountrie = (props) => {
     const {flag, name, population, region, capital} = props.countrie;
     return ( 
-        <div className="card-countrie">
-            <div><img src={flag} alt=""/></div>
-            <h3>{name}</h3>
-            <p>{population}</p>
-            <p>{region}</p>
-            <p>{capital}</p>
-        </div>
+        <Card>
+            <div>
+                <img src={flag} alt=""></img>
+            </div>
+            <div className="country-info">
+                <h3>{name}</h3>
+                <p>Population: <span>{population}</span></p>
+                <p>Region: <span>{region}</span></p>
+                <p>Capital: <span>{capital}</span></p>
+            </div>
+        </Card>
      );
 }
  

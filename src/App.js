@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import Routes from './routes'
+import GlobalStyle from './styles/global'
 
 function App() {
   return (
-    <div className="App">
+    <Fragment>
+      <GlobalStyle />
       <Routes/>
-    </div>
+    </Fragment>
   );
 }
 

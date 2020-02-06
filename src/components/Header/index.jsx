@@ -1,11 +1,13 @@
 import React from 'react';
 
+import { HeaderContainer } from './styles'
+
 const Header = () => {
     return ( 
-        <header>
+        <HeaderContainer>
             <h1>Where in the world?</h1>
-            <p>theme</p>
-        </header>
+            <p>Dark Mode</p>
+        </HeaderContainer>
     );
 }
  
