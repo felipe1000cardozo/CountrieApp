@@ -27,6 +27,10 @@ export default createGlobalStyle`
  button{
    cursor: pointer;
  }
+ a{
+   display: contents;
+   text-decoration: none;
+ }
 
  :root{
     --primary-color: #2b3945;

@@ -65,9 +65,12 @@ const Home = () => {
         </select>
       </Nav>
       <ContainerCards>
-        <Link to="https://restcountries.eu/rest/v2/alpha?codes=col">test</Link>
         {filteredCountries.map(countrie => {
-          return <CardCountrie key={countrie.alpha2Code} countrie={countrie} />;
+          return (
+            <Link to={`country/${countrie.alpha2Code}`}>
+              <CardCountrie key={countrie.alpha2Code} countrie={countrie} />
+            </Link>
+          );
         })}
       </ContainerCards>
     </Main>
