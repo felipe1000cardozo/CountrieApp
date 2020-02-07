@@ -32,11 +32,6 @@ export default createGlobalStyle`
    text-decoration: none;
  }
 
- :root{
-    --primary-color: #2b3945;
-    --secoundary-color: #202c37;  
-    --text-color: #fafafa; 
- }
  #root{
      width: 100%;
      max-width: 1440px;

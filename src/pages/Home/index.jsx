@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { FaSpinner } from "react-icons/fa";
 
 import CardCountrie from "../../components/CardCountrie";
-import { Main, ContainerCards, Nav } from "./styles";
+import { Main, ContainerCards, Nav, AnimatedSpinner } from "./styles";
 
 const Home = () => {
   const [allCountries, setAllCountries] = useState([]);
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [regionSelected, setRegionSelected] = useState("all");
   const [searchInput, setSearchInput] = useState("");
+  const [loading, setloading] = useState(true);
 
   useEffect(() => {
     loadCountries();
@@ -28,6 +30,7 @@ const Home = () => {
     setAllCountries(data);
     setFilteredCountries(data);
     console.log("loadContries");
+    setloading(false);
   };
 
   const search = () => {
@@ -43,7 +46,11 @@ const Home = () => {
     return filtered;
   };
 
-  return (
+  return loading ? (
+    <AnimatedSpinner>
+      <FaSpinner color="#000" size={60} />
+    </AnimatedSpinner>
+  ) : (
     <Main>
       <Nav>
         <input
@@ -67,8 +74,11 @@ const Home = () => {
       <ContainerCards>
         {filteredCountries.map(countrie => {
           return (
-            <Link to={`country/${countrie.alpha2Code}`}>
-              <CardCountrie key={countrie.alpha2Code} countrie={countrie} />
+            <Link
+              key={countrie.alpha2Code}
+              to={`country/${countrie.alpha2Code}`}
+            >
+              <CardCountrie countrie={countrie} />
             </Link>
           );
         })}

@@ -1,4 +1,27 @@
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
+
+const animate = keyframes`
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg)
+  }
+`;
+
+export const AnimatedSpinner = styled.span`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.5;
+  ${css`
+    svg {
+      animation: ${animate} 2s linear infinite;
+    }
+  `}
+`;
 
 export const Main = styled.main`
   display: flex;

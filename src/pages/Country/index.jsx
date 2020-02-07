@@ -1,13 +1,16 @@
 import React, { useEffect, useState, Fragment } from "react";
-import { FaArrowLeft } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaArrowLeft, FaSpinner } from "react-icons/fa";
 
-import { CountryContainer, BackButton } from "./styles";
+import BorderCountries from "../../components/BorderCountries";
+import { CountryContainer, BackButton, AnimatedSpinner } from "./styles";
 
 function Country({ match }) {
   // useEffect(() => {
   //   loadCountrie();
   // }, []);
   const [country, setCountry] = useState({});
+  const [loading, setloading] = useState(true);
 
   useEffect(() => {
     async function loadCountry() {
@@ -19,20 +22,27 @@ function Country({ match }) {
       const data = await response.json();
 
       setCountry(data[0]);
-      console.log(data[0]);
+      setloading(false);
     }
     loadCountry();
   }, []);
 
-  return (
+  return loading ? (
+    <AnimatedSpinner className="load">
+      <FaSpinner color="#000" size={60} />
+    </AnimatedSpinner>
+  ) : (
     <Fragment>
+      {loading.name}
       <nav>
-        <BackButton>
-          <span>
-            <FaArrowLeft />
-          </span>
-          Back
-        </BackButton>
+        <Link to="/">
+          <BackButton>
+            <span>
+              <FaArrowLeft />
+            </span>
+            Back
+          </BackButton>
+        </Link>
       </nav>
 
       <CountryContainer>
@@ -43,13 +53,13 @@ function Country({ match }) {
           <h1>{country.name}</h1>
           <div>
             <p>
-              Population: <span>{country.population}</span>
+              Population: <span>{country.population.toLocaleString()}</span>
             </p>
             <p>
-              Native Name:<span>{/*country.altSpellings[1]*/}</span>
+              Native Name: <span>{country.altSpellings[1]}</span>
             </p>
             <p>
-              Region: <span>{country.regions}</span>
+              Region: <span>{country.region}</span>
             </p>
             <p>
               Sub Region: <span>{country.subregion}</span>
@@ -63,14 +73,26 @@ function Country({ match }) {
               Top Level Domain: <span>{country.topLevelDomain}</span>
             </p>
             <p>
-              Currencies: <span>{/*country.currencies[0].name*/}</span>
+              Currencies:
+              <span>
+                {country.currencies.map(currenci => {
+                  return <> {currenci.name}</>;
+                })}
+              </span>
             </p>
             <p>
-              Languages: <span>{/*country.languages[0].name*/}</span>
+              Languages:
+              <span>
+                {country.languages.map(language => {
+                  return <> {language.name}</>;
+                })}
+              </span>
             </p>
           </div>
           <div>
-            <p>Border Countries: </p>
+            <p>
+              Border Countries: <BorderCountries border={country.borders} />
+            </p>
           </div>
         </section>
       </CountryContainer>
