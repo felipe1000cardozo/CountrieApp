@@ -25,7 +25,7 @@ function Country({ match }) {
       setloading(false);
     }
     loadCountry();
-  }, []);
+  }, [match.params.code]);
 
   return loading ? (
     <AnimatedSpinner className="load">
