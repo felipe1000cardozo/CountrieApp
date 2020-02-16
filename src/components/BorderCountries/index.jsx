@@ -21,7 +21,7 @@ const BorderCountries = ({ border }) => {
     }
 
     load();
-  }, []);
+  }, [border]);
 
   return loading ? (
     <>
