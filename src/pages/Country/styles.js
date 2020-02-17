@@ -85,6 +85,9 @@ export const CountryContainer = styled.main`
         display: flex;
         flex-wrap: wrap;
         align-items: center;
+        span {
+          padding-left: 4px;
+        }
         a {
           margin: 3px;
           display: block;
