@@ -35,12 +35,14 @@ export const ContainerCards = styled.section`
 
 export const Nav = styled.nav`
   display: flex;
+  flex-wrap: wrap;
   margin: 50px 38px 12px;
   justify-content: space-between;
   input {
-    padding: 12px;
-    width: 75%;
+    padding: 20px;
+    width: 100%;
     max-width: 480px;
+    margin-bottom: 50px;
     border: none;
     border-radius: 6px;
     background-color: var(--primary-color);
@@ -49,7 +51,8 @@ export const Nav = styled.nav`
   }
   select {
     padding: 20px;
-    width: 30%;
+    width: 100%;
+    height: fit-content;
     max-width: 200px;
     border: none;
     border-radius: 6px;

@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import { FiMoon } from "react-icons/fi";
 import { FaMoon } from "react-icons/fa";
 
@@ -9,9 +9,18 @@ import { HeaderContainer } from "./styles";
 
 const Header = () => {
   const [dark, setDark] = useState(true);
-  //   function changeTheme(){
-  //       dark? setDark(false) : setDark(true);
-  //   }
+
+  //Load last theme used from localStorage
+  useEffect(() => {
+    const themeStorage = localStorage.getItem("theme");
+    if (themeStorage) {
+      setDark(JSON.parse(themeStorage));
+    }
+  }, []);
+  //Save theme on localStorage
+  useEffect(() => {
+    localStorage.setItem("theme", JSON.stringify(dark));
+  }, [dark]);
   return (
     <>
       {dark ? <DarkTheme /> : <LightTheme />}

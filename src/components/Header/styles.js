@@ -9,6 +9,12 @@ export const HeaderContainer = styled.div`
   background-color: var(--primary-color);
   color: var(--text-color);
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.5);
+  @media (max-width: 740px) {
+    padding: 30px 10px;
+    h1 {
+      font-size: 1.3em;
+    }
+  }
   button {
     background: none;
     border: none;

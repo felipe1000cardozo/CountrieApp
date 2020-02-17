@@ -40,6 +40,9 @@ export const BackButton = styled.button`
   :hover {
     box-shadow: 0px 0px 7px rgba(170, 170, 170, 0.3);
   }
+  @media (max-width: 740px) {
+    margin: 80px 20px 0;
+  }
   span {
     margin-right: 9px;
     display: flex;
@@ -47,20 +50,32 @@ export const BackButton = styled.button`
 `;
 
 export const CountryContainer = styled.main`
-  padding: 80px;
+  padding: 80px 40px;
   display: flex;
+  flex-wrap: wrap;
   color: var(--text-color);
+  @media (max-width: 740px) {
+    padding: 80px 20px;
+  }
   .container-img {
-    width: 50%;
-    margin-right: 80px;
+    width: 100%;
+    max-width: 620px;
+    margin: 0 40px;
+    @media (max-width: 740px) {
+      margin: 0;
+    }
     img {
       width: 100%;
     }
   }
   .data-container {
+    width: calc(50% - 80px);
     display: flex;
     flex-wrap: wrap;
     align-content: center;
+    @media (max-width: 740px) {
+      width: 100%;
+    }
     h1 {
       width: 100%;
     }

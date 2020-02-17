@@ -14,11 +14,12 @@ const Home = () => {
 
   useEffect(() => {
     loadCountries();
+    // eslint-disable-next-line
   }, [regionSelected]);
 
   useEffect(() => {
     setFilteredCountries(search());
-    console.log(filteredCountries);
+    // eslint-disable-next-line
   }, [searchInput]);
   //
 
@@ -29,12 +30,10 @@ const Home = () => {
     const data = await response.json();
     setAllCountries(data);
     setFilteredCountries(data);
-    console.log("loadContries");
     setloading(false);
   };
 
   const search = () => {
-    console.log("search");
     let filtered = [];
     if (!searchInput) {
       filtered = allCountries;
