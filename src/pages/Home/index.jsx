@@ -25,7 +25,7 @@ const Home = () => {
 
   const loadCountries = async () => {
     const response = await fetch(
-      `https://restcountries.com/rest/v2/${regionSelected}`
+      `https://restcountries.com/v2/${regionSelected}`
     );
     const data = await response.json();
     setAllCountries(data);
